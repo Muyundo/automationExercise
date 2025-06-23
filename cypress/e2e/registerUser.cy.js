@@ -13,6 +13,7 @@ describe('Register User', () => {
         cy.wait(1000)
         //cy.contains('Email Address already exists!').should('not.be.visible');
         cy.url().should('include', '/signup')
+        cy.contains('Enter Account Information', {timeout: 10000}).should('be.visible')
     })
 
     
