@@ -4,6 +4,15 @@ const { faker } = require("@faker-js/faker")
 
 const email = faker.internet.email()
 const name = faker.person.fullName()
+const fname = faker.person.firstName()
+const lname = faker.person.lastName()
+const address = faker.location.streetAddress()
+const company = faker.company.name()
+const address2 = faker.location.secondaryAddress()
+const state = faker.location.state()
+const city = faker.location.city()
+const zipcode = faker.location.zipCode()
+const mobile = faker.phone.number()
 beforeEach(() => {
     cy.baseurl()
 })
@@ -23,6 +32,25 @@ describe('Register User', () => {
         const gender = ['#id_gender1', '#id_gender2']
         const randomIndex = Math.floor(Math.random() * gender.length);
         cy.get(gender[randomIndex]).check()
+
+        cy.get('[data-qa="password"]').type('Test@123')
+        cy.get('[data-qa="days"]').select('1')
+        cy.get('[data-qa="months"]').select('January')
+        cy.get('[data-qa="years"]').select('1990')
+        cy.get('#newsletter').check()
+        cy.get('#optin').check()
+        cy.get('[data-qa="first_name"]').type(fname)
+        cy.get('[data-qa="last_name"]').type(lname)
+        cy.get('[data-qa="company"]').type(company)
+        cy.get('[data-qa="address"]').type(address2)
+        cy.get('[data-qa="state"]').type(state)
+        cy.get('[data-qa="city"]').type(city)
+        cy.get('[data-qa="zipcode"]').type(zipcode)
+        cy.get('[data-qa="mobile_number"]').type(mobile)
+        cy.get('[data-qa="create-account"]').click()
+        cy.url().should('include', '/account_created')
+        cy.get('[data-qa="continue-button"]').click()
+        cy.url().should('include', '/')
     })
 
     
