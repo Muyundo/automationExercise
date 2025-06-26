@@ -30,7 +30,7 @@ describe('Register User', () => {
         cy.contains('Enter Account Information', {timeout: 10000}).should('be.visible')
 
         const gender = ['#id_gender1', '#id_gender2']
-        const randomIndex = Math.floor(Math.random() * gender.length);
+        const randomIndex = Math.floor(Math.random() * gender.length)
         cy.get(gender[randomIndex]).check()
 
         cy.get('[data-qa="password"]').type('Test@123')
@@ -48,9 +48,33 @@ describe('Register User', () => {
         cy.get('[data-qa="zipcode"]').type(zipcode)
         cy.get('[data-qa="mobile_number"]').type(mobile)
         cy.get('[data-qa="create-account"]').click()
+        const regData = {
+            email: email,
+            name: name,
+            fname: fname,
+            lname: lname,
+            address: address,
+            company: company,
+            address2: address2,
+            state: state,
+            city: city,
+            zipcode: zipcode,
+            mobile: mobile
+        }
+        cy.writeFile('cypress/fixtures/regData.json', regData)
+        cy.contains('Account Created!', {timeout: 10000}).should('be.visible')
+
         cy.url().should('include', '/account_created')
         cy.get('[data-qa="continue-button"]').click()
         cy.url().should('include', '/')
+        cy.get('.shop-menu > .nav').contains(' Logged in as ').should('be.visible')
+        cy.get('.shop-menu > .nav').contains(name).should('be.visible')
+        cy.contains('Delete Account', {timeout: 10000}).should('be.visible').click()
+        cy.contains('Account Deleted!', {timeout: 10000}).should('be.visible')
+        cy.url().should('include', '/delete_account')
+        cy.get('[data-qa="continue-button"]').click()
+
+
     })
 
     
