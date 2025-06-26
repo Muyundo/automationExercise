@@ -77,6 +77,9 @@ describe('Test Cases', () => {
 
     })
 
-    
+    it('Login User with correct email and password', () => {
+        cy.url().should('include', 'automationexercise.com')
+
+    })    
 })
     
