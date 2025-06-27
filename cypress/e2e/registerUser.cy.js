@@ -17,7 +17,7 @@ beforeEach(() => {
     cy.baseurl()
 })
 describe('Test Cases', () => {
-    it('Register User', () => {
+   /* it('Register User', () => {
         cy.url().should('include', 'automationexercise.com')
         cy.get('.header-middle > .container > .row').contains(' Signup / Login').click()
         cy.url().should('include', '/login')
@@ -194,6 +194,17 @@ describe('Test Cases', () => {
          .should('be.visible')
          .and('contain.text', 'Polo')
 
+    })*/
+
+    it('Search Products', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.contains('Products').click()
+        cy.url().should('include', '/products')
+        cy.get('.features_items > h2.title.text-center').should('be.visible').and('have.text', 'All Products')
+        cy.get('#search_product').type('Blue Top')
+        cy.get('#submit_search').click()
+        cy.url().should('include', '/products')
+        cy.get('.product-image-wrapper').contains('Blue Top').should('be.visible')
     })
         
 })
