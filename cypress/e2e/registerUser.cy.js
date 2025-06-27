@@ -102,5 +102,16 @@ describe('Test Cases', () => {
         cy.get('[data-qa="login-button"]').click()
         cy.contains('Your email or password is incorrect!', {timeout: 10000}).should('be.visible')
     })
+
+    it('Login user with correct email and incorrect password', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.contains('Signup / Login').click()
+        cy.url().should('include', '/login')
+        cy.contains('Login to your account', {timeout: 10000}).should('be.visible')
+        cy.get('[data-qa="login-email"]').type('Chelsie_Bosco63@gmail.com')
+        cy.get('[data-qa="login-password"]').type('incorrectpassword')
+        cy.get('[data-qa="login-button"]').click()
+        cy.contains('Your email or password is incorrect!', {timeout: 10000}).should('be.visible')
+    })
 })
     
