@@ -154,5 +154,14 @@ describe('Test Cases', () => {
         cy.contains('Home', {timeout: 10000}).should('be.visible').click()
         cy.url().should('include', '/')
     })
+
+    it('Verify Test Cases page', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.contains('Test Cases').click()
+        cy.url().should('include', '/test_cases')
+        cy.get('h2.title.text-center').should('be.visible').and('have.text', 'Test Cases')
+        cy.contains('Below is the list of test Cases for you to practice the Automation. Click on the scenario for detailed Test Steps:')
+    })
+        
 })
     
