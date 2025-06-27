@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+import 'cypress-file-upload'
 const { faker } = require("@faker-js/faker")
 
 const email = faker.internet.email()
@@ -137,6 +137,20 @@ describe('Test Cases', () => {
         cy.get('[data-qa="signup-email"]').type('Chelsie_Bosco63@gmail.com')
         cy.get('[data-qa="signup-button"]').click()
         cy.contains('Email Address already exist!', {timeout: 10000}).should('be.visible')
+    })
+
+    it('Contact Us form', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.contains('Contact us').click()
+        cy.url().should('include', '/contact_us')
+        cy.contains('Get In Touch', {timeout: 10000}).should('be.visible')
+        cy.get('[data-qa="name"]').type(name)
+        cy.get('[data-qa="email"]').type(email)
+        cy.get('[data-qa="subject"]').type('Test Subject')
+        cy.get('[data-qa="message"]').type('This is a test message.')
+        cy.get('input[name="upload_file"]').attachFile('example.json')
+        cy.get('[data-qa="submit-button"]').click()
+        cy.contains('Success! Your details have been submitted successfully.', {timeout: 10000}).should('be.visible')
     })
 })
     
