@@ -214,6 +214,16 @@ describe('Test Cases', () => {
         cy.get('#subscribe').click()
         cy.contains('You have been successfully subscribed!', {timeout: 10000}).should('be.visible')
     })
+
+    it('Verify subscription in Cart page', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.contains('Cart').click()
+        cy.url().should('include', '/view_cart')
+        cy.get('footer .single-widget h2').should('be.visible').and('have.text', 'Subscription')
+        cy.get('#susbscribe_email').type(email)
+        cy.get('#subscribe').click()
+        cy.contains('You have been successfully subscribed!', {timeout: 10000}).should('be.visible')
+    })
         
 })
     
