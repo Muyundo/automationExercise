@@ -36,3 +36,5 @@ coverage/
 *.tar
 *.gz
 *.swp
+regData.json
+example.json
