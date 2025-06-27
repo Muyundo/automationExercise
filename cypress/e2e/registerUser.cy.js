@@ -151,6 +151,8 @@ describe('Test Cases', () => {
         cy.get('input[name="upload_file"]').attachFile('example.json')
         cy.get('[data-qa="submit-button"]').click()
         cy.contains('Success! Your details have been submitted successfully.', {timeout: 10000}).should('be.visible')
+        cy.contains('Home', {timeout: 10000}).should('be.visible').click()
+        cy.url().should('include', '/')
     })
 })
     
