@@ -206,6 +206,14 @@ describe('Test Cases', () => {
         cy.url().should('include', '/products')
         cy.get('.product-image-wrapper').contains('Blue Top').should('be.visible')
     })
+
+    it('Verify Subscription in home page', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.get('footer .single-widget h2').should('be.visible').and('have.text', 'Subscription')
+        cy.get('#susbscribe_email').type(email)
+        cy.get('#subscribe').click()
+        cy.contains('You have been successfully subscribed!', {timeout: 10000}).should('be.visible')
+    })
         
 })
     
