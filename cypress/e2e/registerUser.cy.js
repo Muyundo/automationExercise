@@ -127,5 +127,16 @@ describe('Test Cases', () => {
         cy.contains('Logout', {timeout: 10000}).should('be.visible').click()
         cy.url().should('include', '/login')
     })
+
+    it('Register user with an existing email', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.contains('Signup / Login').click()
+        cy.url().should('include', '/login')
+        cy.contains('New User Signup!', {timeout: 10000}).should('be.visible')
+        cy.get('[data-qa="signup-name"]').type(name)
+        cy.get('[data-qa="signup-email"]').type('Chelsie_Bosco63@gmail.com')
+        cy.get('[data-qa="signup-button"]').click()
+        cy.contains('Email Address already exist!', {timeout: 10000}).should('be.visible')
+    })
 })
     
