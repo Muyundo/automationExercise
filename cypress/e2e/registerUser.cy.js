@@ -235,7 +235,12 @@ describe('Test Cases', () => {
         cy.contains('View Cart').click()
         cy.url().should('include', '/view_cart')
         cy.get('.cart_description > h4').contains('Blue Top', {timeout: 10000}).should('be.visible')
+        cy.get('.cart_price > p').contains('Rs. 500', {timeout: 10000}).should('be.visible')
+        cy.get('.cart_quantity > .disabled').should('have.text', '1')
+        cy.get('.cart_total > .cart_total_price').should('have.text', 'Rs. 500')
     })
+
+    
         
 })
     
