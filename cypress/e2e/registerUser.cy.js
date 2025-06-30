@@ -224,6 +224,18 @@ describe('Test Cases', () => {
         cy.get('#subscribe').click()
         cy.contains('You have been successfully subscribed!', {timeout: 10000}).should('be.visible')
     })
+
+    it('Add products in the cart', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.contains('Products').click()
+        cy.url().should('include', '/products')
+        cy.get('.features_items > h2.title.text-center').should('be.visible').and('have.text', 'All Products')
+        cy.contains('Add to cart').first().click()
+        cy.contains('Added!').should('be.visible')
+        cy.contains('View Cart').click()
+        cy.url().should('include', '/view_cart')
+        cy.get('.cart_description > h4').contains('Blue Top', {timeout: 10000}).should('be.visible')
+    })
         
 })
     
