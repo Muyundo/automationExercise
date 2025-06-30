@@ -240,6 +240,29 @@ describe('Test Cases', () => {
         cy.get('.cart_total > .cart_total_price').should('have.text', 'Rs. 500')
     })
 
+    it('Verify product quantity in the cart', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.contains('Products').click()
+        cy.url().should('include', '/products')
+        cy.get('.features_items > h2.title.text-center').should('be.visible').and('have.text', 'All Products')
+        cy.contains('Add to cart').first().click()
+        cy.contains('Added!').should('be.visible')
+        cy.contains('Continue Shopping').click()
+        cy.contains('Add to cart').first().click()
+        cy.contains('Added!').should('be.visible')
+        cy.contains('View Cart').click()
+        cy.url().should('include', '/view_cart')
+        cy.get('.cart_description > h4').contains('Blue Top', {timeout: 10000}).should('be.visible')
+        cy.get('.cart_price > p').invoke('text').then((priceText) => {
+            const price = parseInt(priceText.replace(/[^\d]/g, ''))
+            cy.get('.cart_quantity > .disabled').invoke('text').then((quantityText) => {
+            const quantity = parseInt(quantityText.trim())
+            const expectedTotal = `Rs. ${price * quantity}`
+        cy.get('.cart_total > .cart_total_price').should('have.text', expectedTotal)
+            })
+        })
+    })
+
     
         
 })
