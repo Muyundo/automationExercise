@@ -17,7 +17,7 @@ beforeEach(() => {
     cy.baseurl()
 })
 describe('Test Cases', () => {
-    it('Register User', () => {
+  /*  it('Register User', () => {
         cy.url().should('include', 'automationexercise.com')
         cy.get('.header-middle > .container > .row').contains(' Signup / Login').click()
         cy.url().should('include', '/login')
@@ -261,6 +261,62 @@ describe('Test Cases', () => {
         cy.get('.cart_total > .cart_total_price').should('have.text', expectedTotal)
             })
         })
+    })*/
+
+    it('Place order register while checkout', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.contains('Products').click()
+        cy.url().should('include', '/products')
+        cy.get('.features_items > h2.title.text-center').should('be.visible').and('have.text', 'All Products')
+        cy.contains('Add to cart').first().click()
+        cy.contains('Added!').should('be.visible')
+        cy.contains('View Cart').click()
+        cy.url().should('include', '/view_cart')
+        cy.contains('Proceed To Checkout').click()
+        cy.url().should('include', '/view_cart')
+        cy.get('.text-center').contains('Register / Login').click()
+        cy.url().should('include', '/login')
+        cy.get('[data-qa="signup-name"]').type(name)
+        cy.get('[data-qa="signup-email"]').type(email)
+        cy.get('[data-qa="signup-button"]').click()
+        const gender = ['#id_gender1', '#id_gender2']
+        const randomIndex = Math.floor(Math.random() * gender.length)
+        cy.get(gender[randomIndex]).check()
+
+        cy.get('[data-qa="password"]').type('Test@123')
+        cy.get('[data-qa="days"]').select('1')
+        cy.get('[data-qa="months"]').select('January')
+        cy.get('[data-qa="years"]').select('1990')
+        cy.get('#newsletter').check()
+        cy.get('#optin').check()
+        cy.get('[data-qa="first_name"]').type(fname)
+        cy.get('[data-qa="last_name"]').type(lname)
+        cy.get('[data-qa="company"]').type(company)
+        cy.get('[data-qa="address"]').type(address2)
+        cy.get('[data-qa="state"]').type(state)
+        cy.get('[data-qa="city"]').type(city)
+        cy.get('[data-qa="zipcode"]').type(zipcode)
+        cy.get('[data-qa="mobile_number"]').type(mobile)
+        cy.get('[data-qa="create-account"]').click()
+        cy.contains('Account Created!', {timeout: 10000}).should('be.visible')
+        cy.url().should('include', '/account_created')
+            const CheckoutReg = {
+            email: email,
+            name: name,
+            fname: fname,
+            lname: lname,
+            address: address,
+            company: company,
+            address2: address2,
+            state: state,
+            city: city,
+            zipcode: zipcode,
+            mobile: mobile
+        }
+        cy.writeFile('cypress/fixtures/checkoutReg.json', CheckoutReg)
+        cy.get('[data-qa="continue-button"]').click()
+        cy.contains('Logged in as ' + CheckoutReg.name).should('be.visible')
+        cy.get('.col-sm-8').contains('Cart').click()
     })
 
     
