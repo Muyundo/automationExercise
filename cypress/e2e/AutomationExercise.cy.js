@@ -318,6 +318,8 @@ describe('Test Cases', () => {
         cy.contains('Logged in as ' + CheckoutReg.name).should('be.visible')
         cy.get('.col-sm-8').contains('Cart').click()
         cy.contains('Proceed To Checkout').click()
+
+        // Verify in the delivery address
         cy.get('#address_delivery').contains(CheckoutReg.fname).should('be.visible')
         cy.get('#address_delivery').contains(CheckoutReg.lname).should('be.visible')
         cy.get('#address_delivery').contains(CheckoutReg.company).should('be.visible')
@@ -326,6 +328,32 @@ describe('Test Cases', () => {
         cy.get('#address_delivery').contains(CheckoutReg.city).should('be.visible')
         cy.get('#address_delivery').contains(CheckoutReg.zipcode).should('be.visible')
         cy.get('#address_delivery').contains(CheckoutReg.mobile).should('be.visible')
+
+        // Verify in the invoice address
+        cy.get('#address_invoice').contains(CheckoutReg.fname).should('be.visible')
+        cy.get('#address_invoice').contains(CheckoutReg.lname).should('be.visible')
+        cy.get('#address_invoice').contains(CheckoutReg.company).should('be.visible')
+        cy.get('#address_invoice').contains(CheckoutReg.address2).should('be.visible')
+        cy.get('#address_invoice').contains(CheckoutReg.state).should('be.visible')
+        cy.get('#address_invoice').contains(CheckoutReg.city).should('be.visible')
+        cy.get('#address_invoice').contains(CheckoutReg.zipcode).should('be.visible')
+        cy.get('#address_invoice').contains(CheckoutReg.mobile).should('be.visible')
+
+        cy.get('.form-control').type('Test Order')
+        cy.contains('Place Order').click()
+        cy.url().should('include', '/payment')
+        cy.get('[data-qa="name-on-card"]').type(CheckoutReg.name)
+        cy.get('[data-qa="card-number"]').type('4111111111111111')
+        cy.get('[data-qa="cvc"]').type('123')
+        cy.get('[data-qa="expiry-month"]').type('12')
+        cy.get('[data-qa="expiry-year"]').type('2025')
+        cy.get('[data-qa="pay-button"]').click()
+        cy.url().should('include', '/payment_done/500')
+        cy.contains('Congratulations! Your order has been confirmed!').should('be.visible')
+        cy.contains('Order Placed!').should('be.visible')
+        cy.contains('Congratulations! Your order has been confirmed!').should('be.visible')
+        
+        
 
 
     })
