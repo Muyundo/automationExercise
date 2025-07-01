@@ -317,6 +317,17 @@ describe('Test Cases', () => {
         cy.get('[data-qa="continue-button"]').click()
         cy.contains('Logged in as ' + CheckoutReg.name).should('be.visible')
         cy.get('.col-sm-8').contains('Cart').click()
+        cy.contains('Proceed To Checkout').click()
+        cy.get('#address_delivery').contains(CheckoutReg.fname).should('be.visible')
+        cy.get('#address_delivery').contains(CheckoutReg.lname).should('be.visible')
+        cy.get('#address_delivery').contains(CheckoutReg.company).should('be.visible')
+        cy.get('#address_delivery').contains(CheckoutReg.address2).should('be.visible')
+        cy.get('#address_delivery').contains(CheckoutReg.state).should('be.visible')
+        cy.get('#address_delivery').contains(CheckoutReg.city).should('be.visible')
+        cy.get('#address_delivery').contains(CheckoutReg.zipcode).should('be.visible')
+        cy.get('#address_delivery').contains(CheckoutReg.mobile).should('be.visible')
+
+
     })
 
     
