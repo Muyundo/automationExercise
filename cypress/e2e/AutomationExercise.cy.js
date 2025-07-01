@@ -352,10 +352,8 @@ describe('Test Cases', () => {
         cy.contains('Congratulations! Your order has been confirmed!').should('be.visible')
         cy.contains('Order Placed!').should('be.visible')
         cy.contains('Congratulations! Your order has been confirmed!').should('be.visible')
-        
-        
-
-
+        cy.contains('Delete Account', {timeout: 10000}).should('be.visible').click()
+        cy.contains('Account Deleted!', {timeout: 10000}).should('be.visible')
     })
 
     
