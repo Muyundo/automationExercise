@@ -17,7 +17,7 @@ beforeEach(() => {
     cy.baseurl()
 })
 describe('Test Cases', () => {
-/*    it('Register User', () => {
+    it('Register User', () => {
         cy.url().should('include', 'automationexercise.com')
         cy.get('.header-middle > .container > .row').contains(' Signup / Login').click()
         cy.url().should('include', '/login')
@@ -366,7 +366,7 @@ describe('Test Cases', () => {
         cy.url().should('include', '/view_cart')
         cy.get('.cart_quantity_delete').first().click()
         cy.contains('Cart is empty!').should('be.visible')
-    })*/
+    })
 
     it('View category products', () => {
         cy.url().should('include', 'automationexercise.com')
