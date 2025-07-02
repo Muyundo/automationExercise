@@ -17,7 +17,7 @@ beforeEach(() => {
     cy.baseurl()
 })
 describe('Test Cases', () => {
- /*   it('Register User', () => {
+/*    it('Register User', () => {
         cy.url().should('include', 'automationexercise.com')
         cy.get('.header-middle > .container > .row').contains(' Signup / Login').click()
         cy.url().should('include', '/login')
@@ -354,7 +354,7 @@ describe('Test Cases', () => {
         cy.contains('Congratulations! Your order has been confirmed!').should('be.visible')
         cy.contains('Delete Account', {timeout: 10000}).should('be.visible').click()
         cy.contains('Account Deleted!', {timeout: 10000}).should('be.visible')
-    })*/
+    })
 
     it('Remove products from cart', () => {
         cy.url().should('include', 'automationexercise.com')
@@ -366,7 +366,41 @@ describe('Test Cases', () => {
         cy.url().should('include', '/view_cart')
         cy.get('.cart_quantity_delete').first().click()
         cy.contains('Cart is empty!').should('be.visible')
+    })*/
+
+    it('View category products', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.contains('Products').click()
+        cy.get('#accordian').contains('Women').click()
+        cy.get('#Women > .panel-body').contains('Dress').click()
+        cy.contains('Women - Dress Products', {timeout: 10000}).should('be.visible')
+
+        cy.get('#accordian').contains('Women').click()
+        cy.get('#Women > .panel-body').contains('Tops ').click()
+        cy.contains('Tops Products', {timeout: 10000}).should('be.visible')
+
+        cy.get('#accordian').contains('Women').click()
+        cy.get('#Women > .panel-body').contains('Saree ').click()
+        cy.contains('Saree Products', {timeout: 10000}).should('be.visible')
+
+        cy.get('#accordian').contains('Men').click()
+        cy.get('#Men > .panel-body').contains('Tshirts ').click()
+        cy.contains('Men - Tshirts Products', {timeout: 10000}).should('be.visible')
+
+        cy.get('#accordian').contains('Men').click()
+        cy.get('#Men > .panel-body').contains('Jeans ').click()
+        cy.contains('Men - Jeans Products', {timeout: 10000}).should('be.visible')
+
+        cy.get('#accordian').contains('Kids').click()
+        cy.get('#Kids > .panel-body').contains('Dress ').click()
+        cy.contains('Kids - Dress Products', {timeout: 10000}).should('be.visible')
+
+        cy.get('#accordian').contains('Kids').click()
+        cy.get('#Kids > .panel-body').contains('Tops & Shirts').click()
+        cy.contains('Kids - Tops & Shirts Products', {timeout: 10000}).should('be.visible')
+
     })
+
         
 })
     
