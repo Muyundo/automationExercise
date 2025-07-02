@@ -17,7 +17,7 @@ beforeEach(() => {
     cy.baseurl()
 })
 describe('Test Cases', () => {
-    it('Register User', () => {
+  /*  it('Register User', () => {
         cy.url().should('include', 'automationexercise.com')
         cy.get('.header-middle > .container > .row').contains(' Signup / Login').click()
         cy.url().should('include', '/login')
@@ -399,7 +399,16 @@ describe('Test Cases', () => {
         cy.get('#Kids > .panel-body').contains('Tops & Shirts').click()
         cy.contains('Kids - Tops & Shirts Products', {timeout: 10000}).should('be.visible')
 
-    })
+    })*/
+
+        it('View & Cart Brand Products', () => {
+        cy.contains('Products').click()
+        cy.get('.left-sidebar').contains('Category').should('be.visible')
+        cy.get('.left-sidebar').contains('Polo').click()
+        cy.url().should('include', '/brand_products/polo')
+        cy.contains('Brand - Polo Products', {timeout: 10000}).should('be.visible')
+        })
+
 
         
 })
