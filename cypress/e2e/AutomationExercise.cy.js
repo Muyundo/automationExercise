@@ -17,7 +17,7 @@ beforeEach(() => {
     cy.baseurl()
 })
 describe('Test Cases', () => {
-  /*  it('Register User', () => {
+ /*   it('Register User', () => {
         cy.url().should('include', 'automationexercise.com')
         cy.get('.header-middle > .container > .row').contains(' Signup / Login').click()
         cy.url().should('include', '/login')
@@ -261,7 +261,7 @@ describe('Test Cases', () => {
         cy.get('.cart_total > .cart_total_price').should('have.text', expectedTotal)
             })
         })
-    })*/
+    })
 
     it('Place order register while checkout', () => {
         cy.url().should('include', 'automationexercise.com')
@@ -354,9 +354,19 @@ describe('Test Cases', () => {
         cy.contains('Congratulations! Your order has been confirmed!').should('be.visible')
         cy.contains('Delete Account', {timeout: 10000}).should('be.visible').click()
         cy.contains('Account Deleted!', {timeout: 10000}).should('be.visible')
-    })
+    })*/
 
-    
+    it('Remove products from cart', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.contains('Products').click()
+        cy.url().should('include', '/products')
+        cy.contains('Add to cart').first().click()
+        cy.contains('Added!').should('be.visible')
+        cy.contains('View Cart').click()
+        cy.url().should('include', '/view_cart')
+        cy.get('.cart_quantity_delete').first().click()
+        cy.contains('Cart is empty!').should('be.visible')
+    })
         
 })
     
