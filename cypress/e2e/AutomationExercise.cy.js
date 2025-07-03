@@ -436,9 +436,9 @@ describe('Test Cases', () => {
         cy.url().should('include', '/brand_products/Biba')
         cy.contains('Biba', {timeout: 10000}).should('be.visible')
     
-        })*/
+        })
 
-        it('Search Products and Verify Cart After Login', () => {
+    it('Search Products and Verify Cart After Login', () => {
         cy.url().should('include', 'automationexercise.com')
         cy.contains('Products').click()
         cy.url().should('include', '/products')
@@ -462,7 +462,18 @@ describe('Test Cases', () => {
         cy.get('.cart_price > p').contains('Rs. 500', {timeout: 10000}).should('be.visible')
         cy.get('.cart_quantity > .disabled').should('have.text', '1')
         cy.get('.cart_total > .cart_total_price').should('have.text', 'Rs. 500')
-        })
+        })*/
+
+    it('Add review for product', () => {
+        cy.contains('Products').click()
+        cy.contains('View Product').first().click()
+        cy.get('.product-information > h2').contains('Blue Top').should('be.visible')
+        cy.get('#name').type(name)
+        cy.get('#email').type(email)
+        cy.get('#review').type('I really loved this product. It fits perfectly and the quality is amazing.')
+        cy.get('#button-review').click()
+        cy.contains('Thank you for your review.', {timeout: 10000}).should('be.visible')
+    })
 
 
         
