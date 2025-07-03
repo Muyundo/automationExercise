@@ -428,6 +428,10 @@ describe('Test Cases', () => {
         cy.url().should('include', '/brand_products/Allen%20Solly%20Junior')
         cy.contains('Brand - Allen Solly Junior', {timeout: 10000}).should('be.visible')
 
+        cy.get('.left-sidebar').contains('Kookie Kids').click()
+        cy.url().should('include', '/brand_products/Kookie%20Kids')
+        cy.contains('Kookie Kids', {timeout: 10000}).should('be.visible')
+
             
 
         })
