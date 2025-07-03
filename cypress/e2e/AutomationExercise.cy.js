@@ -432,6 +432,10 @@ describe('Test Cases', () => {
         cy.url().should('include', '/brand_products/Kookie%20Kids')
         cy.contains('Kookie Kids', {timeout: 10000}).should('be.visible')
 
+        cy.get('.left-sidebar').contains('Biba').click()
+        cy.url().should('include', '/brand_products/Biba')
+        cy.contains('Biba', {timeout: 10000}).should('be.visible')
+
             
 
         })
