@@ -399,7 +399,7 @@ describe('Test Cases', () => {
         cy.get('#Kids > .panel-body').contains('Tops & Shirts').click()
         cy.contains('Kids - Tops & Shirts Products', {timeout: 10000}).should('be.visible')
 
-    })*/
+    })
 
         it('View & Cart Brand Products', () => {
         cy.contains('Products').click()
@@ -435,9 +435,33 @@ describe('Test Cases', () => {
         cy.get('.left-sidebar').contains('Biba').click()
         cy.url().should('include', '/brand_products/Biba')
         cy.contains('Biba', {timeout: 10000}).should('be.visible')
+    
+        })*/
 
-            
-
+        it('Search Products and Verify Cart After Login', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.contains('Products').click()
+        cy.url().should('include', '/products')
+        cy.get('.features_items > h2.title.text-center').should('be.visible').and('have.text', 'All Products')
+        cy.get('#search_product').type('Blue Top')
+        cy.get('#submit_search').click()
+        cy.url().should('include', '/products')
+        cy.get('.product-image-wrapper').contains('Blue Top').should('be.visible')
+        cy.contains('Add to cart').first().click()
+        cy.contains('Added!').should('be.visible')
+        cy.contains('View Cart').click()    
+        cy.url().should('include', '/view_cart')
+        cy.get('.cart_description > h4').contains('Blue Top', {timeout: 10000}).should('be.visible')
+        cy.contains('Signup / Login').click()
+        cy.get('[data-qa="login-email"]').type('Chelsie_Bosco63@gmail.com')
+        cy.get('[data-qa="login-password"]').type('Test@123')
+        cy.get('[data-qa="login-button"]').click()
+        cy.contains('Cart').click()
+        cy.url().should('include', '/view_cart')
+        cy.get('.cart_description > h4').contains('Blue Top', {timeout: 10000}).should('be.visible')
+        cy.get('.cart_price > p').contains('Rs. 500', {timeout: 10000}).should('be.visible')
+        cy.get('.cart_quantity > .disabled').should('have.text', '1')
+        cy.get('.cart_total > .cart_total_price').should('have.text', 'Rs. 500')
         })
 
 
