@@ -424,6 +424,10 @@ describe('Test Cases', () => {
         cy.url().should('include', '/brand_products/Babyhug')
         cy.contains('Brand - Babyhug', {timeout: 10000}).should('be.visible')
 
+        cy.get('.left-sidebar').contains('Allen Solly Junior').click()
+        cy.url().should('include', '/brand_products/Allen%20Solly%20Junior')
+        cy.contains('Brand - Allen Solly Junior', {timeout: 10000}).should('be.visible')
+
             
 
         })
