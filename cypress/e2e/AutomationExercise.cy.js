@@ -405,8 +405,19 @@ describe('Test Cases', () => {
         cy.contains('Products').click()
         cy.get('.left-sidebar').contains('Category').should('be.visible')
         cy.get('.left-sidebar').contains('Polo').click()
-        cy.url().should('include', '/brand_products/polo')
+        cy.url().should('include', '/brand_products/Polo')
         cy.contains('Brand - Polo Products', {timeout: 10000}).should('be.visible')
+
+        cy.get('.left-sidebar').contains('H&M').click()
+        cy.url().should('include', '/brand_products/H&M')
+        cy.contains('Brand - H&M Products', {timeout: 10000}).should('be.visible')
+
+        cy.get('.left-sidebar').contains('Madame').click()
+        cy.url().should('include', '/brand_products/Madame')
+        cy.contains('Brand - Madame Products', {timeout: 10000}).should('be.visible')
+
+            
+
         })
 
 
