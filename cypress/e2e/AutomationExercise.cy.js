@@ -420,6 +420,10 @@ describe('Test Cases', () => {
         cy.url().should('include', '/brand_products/Mast%20&%20Harbour')
         cy.contains('Brand - Mast & Harbour Products', {timeout: 10000}).should('be.visible')
 
+        cy.get('.left-sidebar').contains('Babyhug').click()
+        cy.url().should('include', '/brand_products/Babyhug')
+        cy.contains('Brand - Babyhug', {timeout: 10000}).should('be.visible')
+
             
 
         })
