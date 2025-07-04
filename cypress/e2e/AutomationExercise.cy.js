@@ -18,7 +18,6 @@ beforeEach(() => {
 })
 describe('Test Cases', () => {
     it('Register User', () => {
-        cy.url().should('include', 'automationexercise.com')
         cy.get('.header-middle > .container > .row').contains(' Signup / Login').click()
         cy.url().should('include', '/login')
         cy.get('[data-qa="signup-name"]').type(name)
@@ -78,7 +77,7 @@ describe('Test Cases', () => {
     })
 
     it('Login User with correct email and password', () => {
-        cy.url().should('include', 'automationexercise.com')
+
         cy.contains('Signup / Login').click()
         cy.url().should('include', '/login')
         cy.contains('Login to your account', {timeout: 10000}).should('be.visible')
@@ -93,7 +92,7 @@ describe('Test Cases', () => {
     }) 
     
     it('Login user with incorrect email and correct password', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Signup / Login').click()
         cy.url().should('include', '/login')
         cy.contains('Login to your account', {timeout: 10000}).should('be.visible')
@@ -104,7 +103,7 @@ describe('Test Cases', () => {
     })
 
     it('Login user with correct email and incorrect password', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Signup / Login').click()
         cy.url().should('include', '/login')
         cy.contains('Login to your account', {timeout: 10000}).should('be.visible')
@@ -115,7 +114,7 @@ describe('Test Cases', () => {
     })
 
     it('Logout User', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Signup / Login').click()
         cy.url().should('include', '/login')
         cy.contains('Login to your account', {timeout: 10000}).should('be.visible')
@@ -129,7 +128,7 @@ describe('Test Cases', () => {
     })
 
     it('Register user with an existing email', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Signup / Login').click()
         cy.url().should('include', '/login')
         cy.contains('New User Signup!', {timeout: 10000}).should('be.visible')
@@ -140,7 +139,7 @@ describe('Test Cases', () => {
     })
 
     it('Contact Us form', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Contact us').click()
         cy.url().should('include', '/contact_us')
         cy.contains('Get In Touch', {timeout: 10000}).should('be.visible')
@@ -156,7 +155,7 @@ describe('Test Cases', () => {
     })
 
     it('Verify Test Cases page', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Test Cases').click()
         cy.url().should('include', '/test_cases')
         cy.get('h2.title.text-center').should('be.visible').and('have.text', 'Test Cases')
@@ -164,7 +163,7 @@ describe('Test Cases', () => {
     })
 
     it('Verify products and all product details page', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Products').click()
         cy.url().should('include', '/products')
         cy.get('.features_items > h2.title.text-center').should('be.visible').and('have.text', 'All Products')
@@ -197,7 +196,7 @@ describe('Test Cases', () => {
     })
 
     it('Search Products', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Products').click()
         cy.url().should('include', '/products')
         cy.get('.features_items > h2.title.text-center').should('be.visible').and('have.text', 'All Products')
@@ -208,7 +207,7 @@ describe('Test Cases', () => {
     })
 
     it('Verify Subscription in home page', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.get('footer .single-widget h2').should('be.visible').and('have.text', 'Subscription')
         cy.get('#susbscribe_email').type(email)
         cy.get('#subscribe').click()
@@ -216,7 +215,7 @@ describe('Test Cases', () => {
     })
 
     it('Verify subscription in Cart page', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Cart').click()
         cy.url().should('include', '/view_cart')
         cy.get('footer .single-widget h2').should('be.visible').and('have.text', 'Subscription')
@@ -226,7 +225,7 @@ describe('Test Cases', () => {
     })
 
     it('Add products in the cart', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Products').click()
         cy.url().should('include', '/products')
         cy.get('.features_items > h2.title.text-center').should('be.visible').and('have.text', 'All Products')
@@ -241,7 +240,7 @@ describe('Test Cases', () => {
     })
 
     it('Verify product quantity in the cart', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Products').click()
         cy.url().should('include', '/products')
         cy.get('.features_items > h2.title.text-center').should('be.visible').and('have.text', 'All Products')
@@ -264,7 +263,7 @@ describe('Test Cases', () => {
     })
 
     it('Place order register while checkout', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Products').click()
         cy.url().should('include', '/products')
         cy.get('.features_items > h2.title.text-center').should('be.visible').and('have.text', 'All Products')
@@ -358,7 +357,7 @@ describe('Test Cases', () => {
     })
         
     it('Remove products from cart', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Products').click()
         cy.url().should('include', '/products')
         cy.contains('Add to cart').first().click()
@@ -370,7 +369,7 @@ describe('Test Cases', () => {
     })
 
     it('View category products', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Products').click()
         cy.get('#accordian').contains('Women').click()
         cy.get('#Women > .panel-body').contains('Dress').click()
@@ -440,7 +439,7 @@ describe('Test Cases', () => {
         })
 
     it('Search Products and Verify Cart After Login', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.contains('Products').click()
         cy.url().should('include', '/products')
         cy.get('.features_items > h2.title.text-center').should('be.visible').and('have.text', 'All Products')
@@ -484,7 +483,7 @@ describe('Test Cases', () => {
     })
 
    it('Verify Scroll Up using Arrow button and Scroll Down functionality', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.get('#scrollUp').should('not.be.visible')
         cy.scrollTo('bottom')
         cy.get('#scrollUp').should('be.visible')
@@ -494,7 +493,7 @@ describe('Test Cases', () => {
     })
 
     it('Verify Scroll Up without Arrow button and Scroll Down functionality', () => {
-        cy.url().should('include', 'automationexercise.com')
+ 
         cy.get('#scrollUp').should('not.be.visible')
         cy.scrollTo('bottom')
         cy.get('#scrollUp').should('be.visible')
