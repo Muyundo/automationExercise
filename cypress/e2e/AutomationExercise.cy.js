@@ -462,7 +462,7 @@ describe('Test Cases', () => {
         cy.get('.cart_price > p').contains('Rs. 500', {timeout: 10000}).should('be.visible')
         cy.get('.cart_quantity > .disabled').should('have.text', '1')
         cy.get('.cart_total > .cart_total_price').should('have.text', 'Rs. 500')
-        })*/
+        })
 
     it('Add review for product', () => {
         cy.contains('Products').click()
@@ -473,6 +473,16 @@ describe('Test Cases', () => {
         cy.get('#review').type('I really loved this product. It fits perfectly and the quality is amazing.')
         cy.get('#button-review').click()
         cy.contains('Thank you for your review.', {timeout: 10000}).should('be.visible')
+    })*/
+
+    it('Add to cart from Recommended items', () => {
+        cy.contains('recommended items').should('be.visible')
+        cy.get('a.btn.btn-default.add-to-cart[data-product-id="4"]').first().click()
+        cy.contains('Added!').should('be.visible')
+        cy.contains('View Cart').click()
+        cy.url().should('include', '/view_cart')
+        cy.get('.cart_description > h4').should('be.visible')
+
     })
 
 
