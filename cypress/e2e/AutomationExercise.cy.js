@@ -261,7 +261,7 @@ describe('Test Cases', () => {
         cy.get('.cart_total > .cart_total_price').should('have.text', expectedTotal)
             })
         })
-    })*/
+    })
 
     it('Place order register while checkout', () => {
         cy.url().should('include', 'automationexercise.com')
@@ -486,6 +486,16 @@ describe('Test Cases', () => {
         cy.get('.cart_description > h4').should('be.visible')
 
     })*/
+
+   it('Verify Scroll Up using Arrow button and Scroll Down functionality', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.get('#scrollUp').should('not.be.visible')
+        cy.scrollTo('bottom')
+        cy.get('#scrollUp').should('be.visible')
+        cy.get('#scrollUp').click()
+        cy.window().its('scrollY').should('equal', 0) 
+        cy.get('#scrollUp').should('not.be.visible')
+    })
 
 
         
