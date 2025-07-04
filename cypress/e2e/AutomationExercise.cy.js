@@ -261,7 +261,7 @@ describe('Test Cases', () => {
         cy.get('.cart_total > .cart_total_price').should('have.text', expectedTotal)
             })
         })
-    })
+    })*/
 
     it('Place order register while checkout', () => {
         cy.url().should('include', 'automationexercise.com')
@@ -352,9 +352,11 @@ describe('Test Cases', () => {
         cy.contains('Congratulations! Your order has been confirmed!').should('be.visible')
         cy.contains('Order Placed!').should('be.visible')
         cy.contains('Congratulations! Your order has been confirmed!').should('be.visible')
+        cy.contains('Download Invoice').click()
         cy.contains('Delete Account', {timeout: 10000}).should('be.visible').click()
         cy.contains('Account Deleted!', {timeout: 10000}).should('be.visible')
     })
+        /*
 
     it('Remove products from cart', () => {
         cy.url().should('include', 'automationexercise.com')
@@ -473,7 +475,7 @@ describe('Test Cases', () => {
         cy.get('#review').type('I really loved this product. It fits perfectly and the quality is amazing.')
         cy.get('#button-review').click()
         cy.contains('Thank you for your review.', {timeout: 10000}).should('be.visible')
-    })*/
+    })
 
     it('Add to cart from Recommended items', () => {
         cy.contains('recommended items').should('be.visible')
@@ -483,7 +485,7 @@ describe('Test Cases', () => {
         cy.url().should('include', '/view_cart')
         cy.get('.cart_description > h4').should('be.visible')
 
-    })
+    })*/
 
 
         
