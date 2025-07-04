@@ -40,3 +40,4 @@ coverage/
 regData.json
 example.json
 checkoutReg.json
+.vscode-test/
