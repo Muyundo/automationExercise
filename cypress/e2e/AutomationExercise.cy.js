@@ -17,7 +17,7 @@ beforeEach(() => {
     cy.baseurl()
 })
 describe('Test Cases', () => {
-  /*  it('Register User', () => {
+    it('Register User', () => {
         cy.url().should('include', 'automationexercise.com')
         cy.get('.header-middle > .container > .row').contains(' Signup / Login').click()
         cy.url().should('include', '/login')
@@ -352,12 +352,11 @@ describe('Test Cases', () => {
         cy.contains('Congratulations! Your order has been confirmed!').should('be.visible')
         cy.contains('Order Placed!').should('be.visible')
         cy.contains('Congratulations! Your order has been confirmed!').should('be.visible')
-        cy.contains('Download Invoice').click()
+        cy.contains('Download Invoice').should('be.visible').click()
         cy.contains('Delete Account', {timeout: 10000}).should('be.visible').click()
         cy.contains('Account Deleted!', {timeout: 10000}).should('be.visible')
     })
-        /*
-
+        
     it('Remove products from cart', () => {
         cy.url().should('include', 'automationexercise.com')
         cy.contains('Products').click()
@@ -485,7 +484,7 @@ describe('Test Cases', () => {
         cy.url().should('include', '/view_cart')
         cy.get('.cart_description > h4').should('be.visible')
 
-    })*/
+    })
 
    it('Verify Scroll Up using Arrow button and Scroll Down functionality', () => {
         cy.url().should('include', 'automationexercise.com')
@@ -497,7 +496,14 @@ describe('Test Cases', () => {
         cy.get('#scrollUp').should('not.be.visible')
     })
 
-
-        
+    it('Verify Scroll Up without Arrow button and Scroll Down functionality', () => {
+        cy.url().should('include', 'automationexercise.com')
+        cy.get('#scrollUp').should('not.be.visible')
+        cy.scrollTo('bottom')
+        cy.get('#scrollUp').should('be.visible')
+        cy.scrollTo('top')
+        cy.window().its('scrollY').should('equal', 0) 
+        cy.get('#scrollUp').should('not.be.visible')
+    })       
 })
     
