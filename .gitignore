@@ -21,6 +21,7 @@ dist/
 build/
 out/
 downloads/
+reports/
 
 # IDEs and editors
 .vscode/
