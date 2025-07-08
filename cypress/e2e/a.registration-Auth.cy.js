@@ -64,7 +64,7 @@ describe('Test Cases', () => {
 
     })
 
-    /*it('Login User with correct email and password', () => {
+    it('Login User with correct email and password', () => {
 
         cy.contains('Signup / Login').click()
         cy.url().should('include', '/login')
@@ -124,5 +124,5 @@ describe('Test Cases', () => {
         cy.get('[data-qa="signup-email"]').type('Chelsie_Bosco63@gmail.com')
         cy.get('[data-qa="signup-button"]').click()
         cy.contains('Email Address already exist!', {timeout: 10000}).should('be.visible')
-    })*/
+    })
 })
